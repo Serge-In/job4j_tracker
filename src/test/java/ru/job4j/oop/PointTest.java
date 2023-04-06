@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 class PointTest {
 
     @Test
-    void distanceTest2() {
+    void when00and02Then2point0() {
         Point point1 = new Point(0, 0);
         Point point2 = new Point(0, 2);
         double exp = 2.0;
@@ -16,7 +16,7 @@ class PointTest {
     }
 
     @Test
-    void distance3dTest1() {
+    void when000and022Then2point8284() {
         Point point1 = new Point(0, 0, 0);
         Point point2 = new Point(0, 2, 2);
         double exp = 2.8284;
@@ -26,7 +26,7 @@ class PointTest {
     }
 
     @Test
-    void distance3dTest2() {
+    void when000and222Then3dot4641() {
         Point point1 = new Point(0, 0, 0);
         Point point2 = new Point(2, 2, 2);
         double exp = 3.4641;
