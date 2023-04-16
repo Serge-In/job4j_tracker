@@ -7,8 +7,7 @@ public class College {
         Student student = new Student();
         student.setFullName("George Inkerman");
         student.setGroup(123);
-        int year = 2023, month = 4, dayOfMonth = 16;
-        LocalDate localDate = LocalDate.of(year, month, dayOfMonth);
+        LocalDate localDate = LocalDate.of(2023, 4, 16);
         student.setEntryDate(localDate);
         System.out.println("student.fullName = " + student.getFullName());
         System.out.println("student.group = " + student.getGroup());
