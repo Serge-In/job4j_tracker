@@ -1,7 +1,7 @@
 package ru.job4j.oop;
 
 /**
- * https://javarush.com/
+ * javarush.com
  * Вызов конструктора из конструктора
  * 2023-04-11
  */
