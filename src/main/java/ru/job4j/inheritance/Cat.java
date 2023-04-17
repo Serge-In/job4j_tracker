@@ -2,7 +2,6 @@ package ru.job4j.inheritance;
 
 /**
  * Демонстрация сокрытия в дочернем классе статического класса из родительского класса
- * https://www.youtube.com/watch?v=egC9I866MQ0
  * 2023-04-11
  */
 public class Cat extends Animal {

@@ -15,8 +15,10 @@ public class SomeClass {
         this.b = b;
     }
 
+    /**
+     * Вызов конструктора с двумя параметрами.
+     */
     public SomeClass(int a, int b, int c) {
-        // Вызов конструктора с двумя параметрами.
         this(a, b);
         this.c = c;
     }
