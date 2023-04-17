@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 /**
  * java.lang.NullPointerException: Cannot invoke "ru.job4j.tracker.Item.getName()" because "item" is null
  * 2023-04-17
- *
  */
 public class Item {
     private int id;

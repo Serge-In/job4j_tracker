@@ -10,7 +10,6 @@ import java.util.Arrays;
  * получение списка по имени - public Item[] findByName(String key);
  * получение заявки по id - public Item findById(int id);
  * 2023-04-17
- *
  */
 public class Tracker {
     private final Item[] items = new Item[100];
