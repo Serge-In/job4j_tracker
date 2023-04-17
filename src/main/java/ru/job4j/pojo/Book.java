@@ -1,5 +1,9 @@
 package ru.job4j.pojo;
 
+/**
+ * 3. Массивы и модели. [#174892]
+ * 2023-04-17
+ */
 public class Book {
     private String name;
     private int numberOfPages;

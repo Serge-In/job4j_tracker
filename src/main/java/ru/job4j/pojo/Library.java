@@ -1,5 +1,9 @@
 package ru.job4j.pojo;
 
+/**
+ * 3. Массивы и модели. [#174892]
+ * 2023-04-17
+ */
 public class Library {
     public static void main(String[] args) {
 
@@ -21,7 +25,7 @@ public class Library {
         }
 
         for (Book book : books) {
-            if (book.getName().equals("Clean code")) {
+            if ("Clean code".equals(book.getName())) {
                 System.out.println("find the book = " + book.getName());
             }
         }
