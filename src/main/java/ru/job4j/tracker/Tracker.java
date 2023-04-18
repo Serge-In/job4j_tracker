@@ -5,14 +5,16 @@ import java.util.Arrays;
 /**
  * 5. Tracker - хранилище [#396]
  * В классе Tracker должны быть методы:
- * добавление заявок - public Item add(Item item);
- * получение списка всех заявок - public Item[] findAll();
- * получение списка по имени - public Item[] findByName(String key);
- * получение заявки по id - public Item findById(int id);
+ * public Item add(Item item) - добавление заявок
+ * public Item[] findAll() - получение списка всех заявок
+ * public Item[] findByName(String key) - получение списка по имени
+ * public Item findById(int id) - получение заявки по id
  * 6. Метод замены заявки. Tracker.replace [#211748]
- * int indexOf(int id) - поиск индекса по id заявки
- * <p>
- * 2023-04-18
+ * public int indexOf(int id) - поиск индекса по id заявки
+ * public boolean replace(int id, Item item) - замена имени заявки без изменения индекса
+ * 7. Метод удаления заявки Tracker.delete [#211749]
+ * public boolean delete(int id) - удаление заявки по id с удалением пустой ячейки массива заявок
+ * * 2023-04-18
  */
 public class Tracker {
     private final Item[] items = new Item[100];
@@ -65,5 +67,17 @@ public class Tracker {
             return true;
         }
         return false;
+    }
+
+    public boolean delete(int id) {
+        int index = indexOf(id);
+        if (index == -1) {
+            return false;
+        }
+        int length = size - index - 1;
+        System.arraycopy(items, index + 1, items, index, length);
+        items[size - 1] = null;
+        size--;
+        return true;
     }
 }
