@@ -9,6 +9,9 @@ import java.util.Arrays;
  * получение списка всех заявок - public Item[] findAll();
  * получение списка по имени - public Item[] findByName(String key);
  * получение заявки по id - public Item findById(int id);
+ * 6. Метод замены заявки. Tracker.replace [#211748]
+ * int indexOf(int id) - поиск индекса по id заявки
+ * <p>
  * 2023-04-18
  */
 public class Tracker {
@@ -38,15 +41,29 @@ public class Tracker {
         return Arrays.copyOf(itemsMatchKey, counter);
     }
 
-    public Item findById(int id) {
-        Item rsl = null;
-        for (int i = 0; i < size; i++) {
-            Item item = items[i];
-            if (item.getId() == id) {
-                rsl = item;
+    private int indexOf(int id) {
+        int rsl = -1;
+        for (int index = 0; index < size; index++) {
+            if (items[index].getId() == id) {
+                rsl = index;
                 break;
             }
         }
         return rsl;
+    }
+
+    public Item findById(int id) {
+        int index = indexOf(id);
+        return index != -1 ? items[index] : null;
+    }
+
+    public boolean replace(int id, Item item) {
+        int index = indexOf(id);
+        if (index != -1) {
+            String newName = item.getName();
+            items[index].setName(newName);
+            return true;
+        }
+        return false;
     }
 }
