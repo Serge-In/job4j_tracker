@@ -2,10 +2,6 @@ package ru.job4j.tracker;
 
 import java.time.LocalDateTime;
 
-/**
- * java.lang.NullPointerException: Cannot invoke "ru.job4j.tracker.Item.getName()" because "item" is null
- * 2023-04-17
- */
 public class Item {
     private int id;
     private String name;
@@ -42,5 +38,4 @@ public class Item {
     public LocalDateTime getCreated() {
         return created;
     }
-
 }

@@ -6,36 +6,35 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-/** тесты не проходят,
- java.lang.NullPointerException: Cannot invoke "ru.job4j.tracker.Item.getName()" because "item" is null
-
- /@Test public void whenTestFindByNameCheckArrayLength() {
- Tracker tracker = new Tracker();
- Item first = new Item("First");
- Item second = new Item("Second");
- tracker.add(first);
- tracker.add(second);
- tracker.add(new Item("First"));
- tracker.add(new Item("Second"));
- tracker.add(new Item("First"));
- Item[] result = tracker.findByName(first.getName());
- assertThat(result.length).isEqualTo(3);
- }
-
- /@Test public void whenTestFindByNameCheckSecondItemName() {
- Tracker tracker = new Tracker();
- Item first = new Item("First");
- Item second = new Item("Second");
- tracker.add(first);
- tracker.add(second);
- tracker.add(new Item("First"));
- tracker.add(new Item("Second"));
- tracker.add(new Item("First"));
- Item[] result = tracker.findByName(second.getName());
- assertThat(result[1].getName()).isEqualTo(second.getName());
- }
- */
 public class TrackerTest {
+    @Test
+    public void whenTestFindByNameCheckArrayLength() {
+        Tracker tracker = new Tracker();
+        Item first = new Item("First");
+        Item second = new Item("Second");
+        tracker.add(first);
+        tracker.add(second);
+        tracker.add(new Item("First"));
+        tracker.add(new Item("Second"));
+        tracker.add(new Item("First"));
+        Item[] result = tracker.findByName(first.getName());
+        assertThat(result.length).isEqualTo(3);
+    }
+
+    @Test
+    public void whenTestFindByNameCheckSecondItemName() {
+        Tracker tracker = new Tracker();
+        Item first = new Item("First");
+        Item second = new Item("Second");
+        tracker.add(first);
+        tracker.add(second);
+        tracker.add(new Item("First"));
+        tracker.add(new Item("Second"));
+        tracker.add(new Item("First"));
+        Item[] result = tracker.findByName(second.getName());
+        assertThat(result[1].getName()).isEqualTo(second.getName());
+    }
+
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
         Tracker tracker = new Tracker();
