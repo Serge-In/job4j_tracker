@@ -3,11 +3,15 @@ package ru.job4j.tracker;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * 2023-04-20
+ * id увеличивается на 1 при добавлении item в Items[] (ru.job4j.tracker.Tracker.add(Item item))
+ */
 public class Item {
     private int id;
     private String name;
     private LocalDateTime created = LocalDateTime.now();
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss.SSSSSS");
 
     public Item() {
     }
