@@ -82,19 +82,10 @@ public class TrackerTest {
     public void whenReplaceItemIsSuccessful() {
         Tracker tracker = new Tracker();
         Item item = new Item("Bug");
-        ObjectInfo.info("new Item(\"Bug\")", item);
-
-        tracker.add(item); // было id = 0, стало = 1
-        ObjectInfo.info("tracker.add(item)", item);
-
+        tracker.add(item);
         int id = item.getId();
-        System.out.println("item.getId() = " + id);
-
         Item updateItem = new Item("Bug with description");
-        ObjectInfo.info("new Item(\"Bug with description\")", updateItem);
-
         tracker.replace(id, updateItem);
-
         assertThat(tracker.findById(id).getName()).isEqualTo("Bug with description");
     }
 

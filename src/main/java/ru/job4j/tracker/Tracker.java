@@ -63,26 +63,8 @@ public class Tracker {
         int index = indexOf(id);
         boolean rsl = (index != -1);
         if (rsl) {
-            // было так:
-//            ObjectInfo.compare(item, items[index]);
-//            String newName = item.getName();
-//            items[index].setName(newName);
-//            ObjectInfo.compare(item, items[index]);
-
-            // коммент:
-            //Менять необходимо целиком, а не только имя -
-            // у модели может быть гораздо больше полей,
-            // каждое вручную проставлять - идея не из лучших
-
-            //стало так:
-            ObjectInfo.info("Перед заменой items[index] = ", items[index]);
-            items[index] = item; // меняю запись на новую item (все поля)
-            ObjectInfo.info("Замена items[index] = item", items[index]);
-
-            items[index].setId(id); // заменяю id на тот что был до замены всех полей (id = 1), тк item.id = 0;
-            ObjectInfo.info("items[index].setId(id)", items[index]);
-            ObjectInfo.compare2("compare2(item, items[index])", item, items[index]);
-
+            items[index] = item;
+            items[index].setId(id);
         }
         return rsl;
     }
