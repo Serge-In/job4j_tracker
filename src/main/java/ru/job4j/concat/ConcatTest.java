@@ -14,9 +14,6 @@ public class ConcatTest {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 /**
- *
-
-
         было Миллисекунд: 166
         String str = "Job4j";
         for (int index = 0; index < 9999; index++) {
@@ -34,7 +31,6 @@ public class ConcatTest {
         for (int index = 0; index < 9999; index++) {
             str.concat(String.valueOf(index));
         }
-
  */
         System.out.println("Миллисекунд: " + (System.currentTimeMillis() - startTime));
     }
