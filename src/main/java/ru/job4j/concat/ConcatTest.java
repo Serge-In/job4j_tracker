@@ -30,8 +30,6 @@ public class ConcatTest {
 //        for (int index = 0; index < 9999; index++) {
 //            str.concat(String.valueOf(index));
 //        }
-
-
         System.out.println("Миллисекунд: " + (System.currentTimeMillis() - startTime));
     }
 }
