@@ -29,14 +29,17 @@ public class CarService {
         /* valueOf() - получает объект типа класса перечисления по его строковому представлению.*/
         System.out.println("Status.valueOf(\"ACCEPTED\") = " + Status.valueOf("ACCEPTED")); //Status.valueOf("ACCEPTED") = ACCEPTED
 
-        /* Если в классе Status нет такого значения (константы),
-         то будет выброшено исключение IllegalArgumentException.
-         Имя константы должно полностью совпадать, включая регистр.
-         Например, String accepted = "accepted"; вызовет исключение
+        /**
+         * Если в классе Status нет такого значения (константы),
+         * то будет выброшено исключение IllegalArgumentException.
+         * Имя константы должно полностью совпадать, включая регистр.
+         * Например, String accepted = "accepted"; вызовет исключение
+         *
+         * Методы values() и valueOf() не имеют полной реализации в классе Enum, они добавляются в программу на этапе её компиляции.
+         *
+         * так как значения enum не меняются, то при работе с ними можно использовать оператор switch.
+         */
 
-        Методы values() и valueOf() не имеют полной реализации в классе Enum, они добавляются в программу на этапе её компиляции.
-
-        так как значения enum не меняются, то при работе с ними можно использовать оператор switch.*/
         String accepted = "ACCEPTED";
         Status status = Status.valueOf(accepted);
         switch (status) {
