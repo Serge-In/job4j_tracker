@@ -8,24 +8,25 @@ package ru.job4j.varargs;
  * Аргумент strings неявно будет преобразован в массив строк.
  */
 public class VarArgs {
-//Параметр strings в методе text() неявно будет приведён к массиву при передаче аргументов.
+/* Параметр strings в методе text() неявно будет приведён к массиву при передаче аргументов.*/
+
     public static String text(String... strings) {
         StringBuilder builder = new StringBuilder();
         for (String s : strings) {
             builder.append(s);
         }
-        //return builder.toString();
+/*      return builder.toString();*/
 
-        //Количество переданных в varargs аргументов можно узнать с помощью метода length:
+/*        Количество переданных в varargs аргументов можно узнать с помощью метода length:*/
         return builder + " Количество соединенных элементов: " + strings.length;
     }
 
     public static void main(String[] args) {
 
-        //В методе main() в качестве этого параметра мы передаём список аргументов через запятую.
-        System.out.println(text()); //Количество соединенных элементов: 0
+        /*В методе main() в качестве этого параметра мы передаём список аргументов через запятую.*/
+        System.out.println(text()); /*Количество соединенных элементов: 0*/
         System.out.println(text("aaa"));
-        System.out.println(text("aaa", "bbb", "ccc")); //aaabbbccc Количество соединенных элементов: 3
+        System.out.println(text("aaa", "bbb", "ccc")); /*aaabbbccc Количество соединенных элементов: 3*/
         System.out.println(text("aaa", "bbb", "ccc", "ddd", "eee"));
     }
 
