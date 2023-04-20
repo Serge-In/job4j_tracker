@@ -3,12 +3,12 @@ package ru.job4j.concat;
 /**
  * 2023-04-20
  * 13. Работа со строками. StringBuilder, StringJoiner, StringBuffer. [#504915]
- * //        String
- * //        StringBuilder
- * //        StringJoiner
- * //        String.concat()
- * //        String.join()
- * //        StringBuffer
+ *         String
+ *         StringBuilder
+ *         StringJoiner
+ *         String.concat()
+ *         String.join()
+ *         StringBuffer
  */
 public class ConcatTest {
     public static void main(String[] args) {

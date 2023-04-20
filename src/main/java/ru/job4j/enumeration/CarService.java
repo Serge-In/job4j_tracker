@@ -4,10 +4,10 @@ public class CarService {
     public static void main(String[] args) {
 
         Status volvo = Status.IN_WORK;
-        System.out.println(volvo.getClass()); //ru.job4j.enumeration.Status
+        System.out.println(volvo.getClass()); /*ru.job4j.enumeration.Status*/
 
         Status ford = Status.ACCEPTED;
-        System.out.println(ford.toString().getClass()); //java.lang.String
+        System.out.println(ford.toString().getClass()); /*java.lang.String*/
 
         Status vaz = Status.ACCEPTED;
         System.out.println("vaz.getInfo() = " + vaz.getInfo());
