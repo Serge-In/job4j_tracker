@@ -13,7 +13,7 @@ public class Matches {
             System.out.println("Остаток = " + count);
             System.out.println(player + ", введите число от 1 до 3 и не более остатка:");
             int matches = Integer.parseInt(input.nextLine());
-            if (matches < 1 || matches > 3 || matches > count) {
+            if (matches < 1 || matches > Math.min(3, count)) {
                 System.out.println("Ошибка - введенное число не соответствует условию, повторите ход.");
             } else {
                 count -= matches;
