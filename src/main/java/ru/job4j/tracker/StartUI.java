@@ -1,24 +1,39 @@
 package ru.job4j.tracker;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
-/**
- * 2023-04-15
- * 8. Date. Отображение даты. [#310017]
- * Добавьте класс StartUI, в нем создайте один объект Item.
- * На этом объекте вызовите геттер поля created, выведите полученную дату в консоль в отформатированном варианте
- * 2023-04-19
- * 10. toString [#310018]
- * Создайте класс StartUI, в котором создайте 1 объект класса Item, выведите созданный объект в консоль.
- */
 public class StartUI {
+
+    public void init(Scanner scanner, Tracker tracker) {
+        boolean run = true;
+        while (run) {
+            showMenu();
+            System.out.print("Select: ");
+            int select = Integer.parseInt(scanner.nextLine());
+            if (select != 6) {
+                System.out.println("Пользователь выбрал: " + select);
+            } else {
+                run = false;
+            }
+        }
+    }
+
+    private void showMenu() {
+        String[] menu = {
+                "Add new Item", "Show all items", "Edit item",
+                "Delete item", "Find item by id", "Find items by name",
+                "Exit Program"
+        };
+        System.out.println("Menu:");
+        for (int i = 0; i < menu.length; i++) {
+            System.out.println(i + ". " + menu[i]);
+        }
+    }
+
     public static void main(String[] args) {
-        Item item = new Item();
-        LocalDateTime itemCreatedDT = item.getCreated();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-        String itemCreatedDTFormatted = itemCreatedDT.format(formatter);
-        System.out.println("itemCreatedDTFormatted = " + itemCreatedDTFormatted);
-        System.out.println("item = " + item);
+        Scanner scanner = new Scanner(System.in);
+        Tracker tracker = new Tracker();
+        new StartUI().init(scanner, tracker);
+
     }
 }
