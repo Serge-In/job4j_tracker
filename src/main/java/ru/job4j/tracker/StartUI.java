@@ -12,7 +12,7 @@ public class StartUI {
             int select = Integer.parseInt(scanner.nextLine());
             if (select == 0) {
                 System.out.println("=== Create a new Item ===");
-                System.out.print("Enter name:  ");
+                System.out.print("Enter name: ");
                 String name = scanner.nextLine();
                 Item item = new Item(name);
                 tracker.add(item);
@@ -28,14 +28,23 @@ public class StartUI {
                     }
                 }
             } else if (select == 2) {
-                System.out.println("Замена заявки");
-                System.out.print("введите ID заменяемой заявки");
+                System.out.println("Edit item");
+                System.out.print("введите ID заменяемой заявки: ");
                 int id = Integer.parseInt(scanner.nextLine());
-                System.out.print("введите имя новой заявки");
+                System.out.print("введите имя новой заявки: ");
                 String name = scanner.nextLine();
                 Item item = new Item(name);
                 if (tracker.replace(id, item)) {
                     System.out.println("Заявка id = " + id + " заменена");
+                } else {
+                    System.out.println("Заявка id = " + id + " отсутствует в списке заявок");
+                }
+            } else if (select == 3) {
+                System.out.println("Delete item");
+                System.out.print("введите ID удаляемой заявки: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                if (tracker.delete(id)) {
+                    System.out.println("Заявка id = " + id + " удалена");
                 } else {
                     System.out.println("Заявка id = " + id + " отсутствует в списке заявок");
                 }
