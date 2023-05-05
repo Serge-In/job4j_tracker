@@ -27,10 +27,24 @@ public class StartUI {
                         System.out.println(item);
                     }
                 }
+            } else if (select == 2) {
+                System.out.println("Замена заявки");
+                System.out.println("введите ID заменяемой заявки");
+                int id = Integer.parseInt(scanner.nextLine());
+                System.out.println("введите имя новой заявки");
+                String name = scanner.nextLine();
+                Item item = new Item(name);
+                if (tracker.replace(id, item)) {
+                    System.out.println("Заявка id = " + id + " заменена");
+                    System.out.println(tracker.findById(id));
+                } else {
+                    System.out.println("Заявка id = " + id + " отсутствует в списке заявок");
+                }
             } else if (select == 6) {
                 run = false;
             }
         }
+
     }
 
     private void showMenu() {
@@ -49,6 +63,5 @@ public class StartUI {
         Scanner scanner = new Scanner(System.in);
         Tracker tracker = new Tracker();
         new StartUI().init(scanner, tracker);
-
     }
 }
