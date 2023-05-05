@@ -29,14 +29,13 @@ public class StartUI {
                 }
             } else if (select == 2) {
                 System.out.println("Замена заявки");
-                System.out.println("введите ID заменяемой заявки");
+                System.out.print("введите ID заменяемой заявки");
                 int id = Integer.parseInt(scanner.nextLine());
-                System.out.println("введите имя новой заявки");
+                System.out.print("введите имя новой заявки");
                 String name = scanner.nextLine();
                 Item item = new Item(name);
                 if (tracker.replace(id, item)) {
                     System.out.println("Заявка id = " + id + " заменена");
-                    System.out.println(tracker.findById(id));
                 } else {
                     System.out.println("Заявка id = " + id + " отсутствует в списке заявок");
                 }
