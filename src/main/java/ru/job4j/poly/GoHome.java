@@ -10,5 +10,6 @@ public class GoHome {
         System.out.println("Стоимость заправки = " + bus.fuel(100) + "руб.");
         bus.passengers(10);
         bus.move();
+        System.out.println(new Bus());
     }
 }
