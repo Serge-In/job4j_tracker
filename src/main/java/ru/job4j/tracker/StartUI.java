@@ -8,11 +8,7 @@ package ru.job4j.tracker;
  * Input input = new ConsoleInput();
  * 7. Статические методы. [#181779  [#181779]]
  * Создайте статические методы createItem, editItem, deleteItem и т.д.
- * 8. Input и полиморфизм. [#181094  [#181094]]
- * Напишите тест на  метод StartUI.createItem.
- * 9. Тестирование. Подготовка данных. [#182960  [#182960]]
- * Напишите тест на метод StartUI.editItem.
- * Напишите тест на метод StartUI.deleteItem. В этом случае поиск в объекте tracker должен вернуть null.
+
  */
 public class StartUI {
 
