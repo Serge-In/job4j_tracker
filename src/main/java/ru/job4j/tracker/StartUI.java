@@ -8,6 +8,11 @@ package ru.job4j.tracker;
  * Input input = new ConsoleInput();
  * 7. Статические методы. [#181779  [#181779]]
  * Создайте статические методы createItem, editItem, deleteItem и т.д.
+ * 8. Input и полиморфизм. [#181094  [#181094]]
+ * Напишите тест на  метод StartUI.createItem.
+ * 9. Тестирование. Подготовка данных. [#182960  [#182960]]
+ * Напишите тест на метод StartUI.editItem.
+ * Напишите тест на метод StartUI.deleteItem. В этом случае поиск в объекте tracker должен вернуть null.
  */
 public class StartUI {
 
@@ -19,7 +24,7 @@ public class StartUI {
         System.out.println("Добавленная заявка: " + item);
     }
 
-    public static void listItems(Input input, Tracker tracker) {
+    public static void listItems(Tracker tracker) {
         Item[] items = tracker.findAll();
         if (items.length == 0) {
             System.out.println("хранилище еще не содержит заявок");
@@ -85,7 +90,7 @@ public class StartUI {
             if (select == 0) {
                 StartUI.createItem(input, tracker);
             } else if (select == 1) {
-                StartUI.listItems(input, tracker);
+                StartUI.listItems(tracker);
             } else if (select == 2) {
                 StartUI.editItem(input, tracker);
             } else if (select == 3) {
