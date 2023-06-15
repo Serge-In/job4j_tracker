@@ -8,7 +8,6 @@ package ru.job4j.tracker;
  * Input input = new ConsoleInput();
  * 7. Статические методы. [#181779  [#181779]]
  * Создайте статические методы createItem, editItem, deleteItem и т.д.
-
  */
 public class StartUI {
 
