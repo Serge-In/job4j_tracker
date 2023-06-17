@@ -22,11 +22,11 @@ public class ListAction implements UserAction {
     public boolean execute(Input input, Tracker tracker) {
         Item[] items = tracker.findAll();
         if (items.length == 0) {
-            System.out.println("хранилище еще не содержит заявок");
+            out.println("хранилище еще не содержит заявок");
         } else {
-            System.out.println("Список заявок:");
+            out.println("Список заявок:");
             for (Item item : items) {
-                System.out.println(item);
+                out.println(item);
             }
         }
         return true;
