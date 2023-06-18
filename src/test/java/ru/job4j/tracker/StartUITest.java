@@ -125,7 +125,7 @@ public class StartUITest {
                 "Menu." + ln
                 + "0. List of Items" + ln
                 + "1. Exit" + ln
-                + "Список заявок:" + ln + one.toString() + ln
+                + "Список заявок:" + ln + one + ln
                 + "Menu." + ln
                 + "0. List of Items" + ln
                 + "1. Exit" + ln
@@ -151,7 +151,7 @@ public class StartUITest {
                 "Menu." + ln
                 + "0. Find item by id" + ln
                 + "1. Exit" + ln
-                + "Find item by id" + ln + one.toString() + ln
+                + "Find item by id" + ln + one + ln
                 + "Menu." + ln
                 + "0. Find item by id" + ln
                 + "1. Exit" + ln
@@ -165,7 +165,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new StubInput(
-                new String[]{"0", String.valueOf(one.getName()), "1"}
+                new String[]{"0", one.getName(), "1"}
         );
         UserAction[] actions = new UserAction[]{
                 new FindItemsByNameAction(out),
@@ -177,7 +177,7 @@ public class StartUITest {
                 "Menu." + ln
                 + "0. Find items by name" + ln
                 + "1. Exit" + ln
-                + "Find items by name" + ln + one.toString() + ln
+                + "Find items by name" + ln + one + ln
                 + "Menu." + ln
                 + "0. Find items by name" + ln
                 + "1. Exit" + ln
