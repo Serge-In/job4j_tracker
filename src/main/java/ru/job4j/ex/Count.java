@@ -1,5 +1,10 @@
 package ru.job4j.ex;
 
+/**
+ * 2023-06-18
+ * 0.3. Тестирование исключений с junit [#219366  [#219366]]
+ * В тесте нужно использовать метод assertThrows().
+ */
 public class Count {
     public static int add(int start, int finish) {
         if (start > finish) {
