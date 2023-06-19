@@ -22,4 +22,9 @@ public class FactTest {
                 });
         assertThat(exception.getMessage()).isEqualTo("N could not be less than 0");
     }
+
+    @Test
+    public void whenNoException() {
+        assertThat(new Fact().calc(2)).isEqualTo(2);
+    }
 }
