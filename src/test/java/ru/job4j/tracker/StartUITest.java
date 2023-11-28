@@ -1,6 +1,10 @@
 package ru.job4j.tracker;
 
 import org.junit.jupiter.api.Test;
+import ru.job4j.tracker.action.*;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.input.Stub;
+import ru.job4j.tracker.output.Output;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,14 +18,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StartUITest {
     @Test
     public void whenCreateItem() {
-        Output out = new StubOutput();
-        Input in = new StubInput(
+        Output out = new ru.job4j.tracker.output.Stub();
+        Input in = new Stub(
                 new String[]{"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
-        UserAction[] actions = {
-                new CreateAction(out),
-                new ExitAction(out)
+        User[] actions = {
+                new Create(out),
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findAll()[0].getName()).isEqualTo("Item name");
@@ -31,14 +35,14 @@ public class StartUITest {
     public void whenReplaceItem() {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Replaced item"));
-        Output out = new StubOutput();
+        Output out = new ru.job4j.tracker.output.Stub();
         String replacedName = "New item name";
-        Input in = new StubInput(
+        Input in = new Stub(
                 new String[]{"0", String.valueOf(item.getId()), replacedName, "1"}
         );
-        UserAction[] actions = {
-                new EditAction(out),
-                new ExitAction(out)
+        User[] actions = {
+                new Edit(out),
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()).getName()).isEqualTo(replacedName);
@@ -48,13 +52,13 @@ public class StartUITest {
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Deleted item"));
-        Output out = new StubOutput();
-        Input in = new StubInput(
+        Output out = new ru.job4j.tracker.output.Stub();
+        Input in = new Stub(
                 new String[]{"0", String.valueOf(item.getId()), "1"}
         );
-        UserAction[] actions = {
-                new DeleteAction(out),
-                new ExitAction(out)
+        User[] actions = {
+                new Delete(out),
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId())).isNull();
@@ -62,13 +66,13 @@ public class StartUITest {
 
     @Test
     public void whenExit() {
-        Output out = new StubOutput();
-        Input in = new StubInput(
+        Output out = new ru.job4j.tracker.output.Stub();
+        Input in = new Stub(
                 new String[]{"0"}
         );
         Tracker tracker = new Tracker();
-        UserAction[] actions = {
-                new ExitAction(out)
+        User[] actions = {
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -81,16 +85,16 @@ public class StartUITest {
 
     @Test
     public void whenReplaceItemTestOutputIsSuccessfully() {
-        Output out = new StubOutput();
+        Output out = new ru.job4j.tracker.output.Stub();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
-        Input in = new StubInput(
+        Input in = new Stub(
                 new String[]{"0", String.valueOf(one.getId()), replaceName, "1"}
         );
-        UserAction[] actions = new UserAction[]{
-                new EditAction(out),
-                new ExitAction(out)
+        User[] actions = new User[]{
+                new Edit(out),
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -109,15 +113,15 @@ public class StartUITest {
 
     @Test
     public void whenListActionTestOutputIsSuccessfully() {
-        Output out = new StubOutput();
+        Output out = new ru.job4j.tracker.output.Stub();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
-        Input in = new StubInput(
+        Input in = new Stub(
                 new String[]{"0", "1"}
         );
-        UserAction[] actions = new UserAction[]{
-                new ListAction(out),
-                new ExitAction(out)
+        User[] actions = new User[]{
+                new List(out),
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -135,15 +139,15 @@ public class StartUITest {
 
     @Test
     public void whenFindByIdActionTestOutputIsSuccessfully() {
-        Output out = new StubOutput();
+        Output out = new ru.job4j.tracker.output.Stub();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
-        Input in = new StubInput(
+        Input in = new Stub(
                 new String[]{"0", String.valueOf(one.getId()), "1"}
         );
-        UserAction[] actions = new UserAction[]{
-                new FindByIDAction(out),
-                new ExitAction(out)
+        User[] actions = new User[]{
+                new FindByID(out),
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -161,15 +165,15 @@ public class StartUITest {
 
     @Test
     public void whenFindItemsByNameActionTestOutputIsSuccessfully() {
-        Output out = new StubOutput();
+        Output out = new ru.job4j.tracker.output.Stub();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
-        Input in = new StubInput(
+        Input in = new Stub(
                 new String[]{"0", one.getName(), "1"}
         );
-        UserAction[] actions = new UserAction[]{
-                new FindItemsByNameAction(out),
-                new ExitAction(out)
+        User[] actions = new User[]{
+                new FindItemsByName(out),
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
