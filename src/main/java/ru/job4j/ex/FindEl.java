@@ -1,5 +1,7 @@
 package ru.job4j.ex;
 
+import javax.print.event.PrintServiceAttributeListener;
+
 /**
  * 2023-11-29
  * 0.4. Пользовательские исключения. [#219367]
@@ -15,6 +17,7 @@ public class FindEl {
         for (int i = 0; i < value.length; i++) {
             if (key.equals(value[i])) {
                 rsl = i;
+                break;
             }
         }
         if (rsl == -1) {
@@ -23,13 +26,42 @@ public class FindEl {
         return rsl;
     }
 
+    public static boolean sent(String value, String[] abuses) throws ElementAbuseException {
+        for (int i = 0; i < abuses.length; i++) {
+            if (value.equals(abuses[i])) {
+                throw new ElementAbuseException("Element is abused");
+            }
+        }
+        return true;
+    }
+
+    public static void process(String[] values, String key, String[] abuses) {
+
+        try {
+            if (indexOf(values, key) != -1) {
+                sent(key, abuses);
+            }
+//        } catch (ElementAbuseException ea) {
+//            ea.printStackTrace();
+//        } catch (ElementNotFoundException en) {
+//            en.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+//        } catch (Throwable th) {
+//            th.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         String[] value = {"1", "2", "3"};
-        String key = "5";
-        try {
-            System.out.println("index in array for element: " + key + " is " + indexOf(value, key));
-        } catch (ElementNotFoundException e) {
-            e.printStackTrace();
-        }
+        String[] abuses = {"1", "2", "6"};
+        String key = "0";
+//        try {
+//            System.out.println("index in array for element: " + key + " is " + indexOf(value, key));
+//        } catch (ElementNotFoundException e) {
+//            e.printStackTrace();
+//        }
+        System.out.println("element to sent: " + key + " is ");
+        process(value, key, abuses);
     }
 }
