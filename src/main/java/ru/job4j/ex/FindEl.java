@@ -41,14 +41,10 @@ public class FindEl {
             if (indexOf(values, key) != -1) {
                 sent(key, abuses);
             }
-//        } catch (ElementAbuseException ea) {
-//            ea.printStackTrace();
-//        } catch (ElementNotFoundException en) {
-//            en.printStackTrace();
+
         } catch (Exception e) {
             e.printStackTrace();
-//        } catch (Throwable th) {
-//            th.printStackTrace();
+
         }
     }
 
@@ -56,11 +52,6 @@ public class FindEl {
         String[] value = {"1", "2", "3"};
         String[] abuses = {"1", "2", "6"};
         String key = "0";
-//        try {
-//            System.out.println("index in array for element: " + key + " is " + indexOf(value, key));
-//        } catch (ElementNotFoundException e) {
-//            e.printStackTrace();
-//        }
         System.out.println("element to sent: " + key + " is ");
         process(value, key, abuses);
     }
