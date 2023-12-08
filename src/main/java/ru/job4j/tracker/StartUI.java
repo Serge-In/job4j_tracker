@@ -1,8 +1,8 @@
 package ru.job4j.tracker;
 
 import ru.job4j.tracker.action.*;
-import ru.job4j.tracker.input.Console;
 import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.input.ValidateInput;
 import ru.job4j.tracker.output.Output;
 
 /**
@@ -23,6 +23,9 @@ import ru.job4j.tracker.output.Output;
  * 12.1 Зависимость от System.out [#33568 # [#33568]]
  * Нам нужно заменить вывод в консоль на интерфейс Output.
  * Внедрение зависимости будем делать через конструктор CreateAction.
+ * 2023-12-08
+ * в метод init добавьте обработку ситуаций: ввод несуществующего пункта меню, ввода строки вместо числа.
+ * изменим ввод Input input = new Console() с Console на ValidateInput
  */
 public class StartUI {
     private final Output out;
@@ -36,6 +39,10 @@ public class StartUI {
         while (run) {
             showMenu(actions);
             int select = input.askInt("Select: ");
+            if (select < 0 || select >= actions.length) {
+                out.println("Неверный ввод, вы можете выбрать: 0 .. " + (actions.length - 1));
+                continue;
+            }
             User action = actions[select];
             run = action.execute(input, tracker);
         }
@@ -50,7 +57,7 @@ public class StartUI {
 
     public static void main(String[] args) {
         Output output = new ru.job4j.tracker.output.Console();
-        Input input = new Console();
+        Input input = new ValidateInput();
         Tracker tracker = new Tracker();
         User[] actions = {
                 new Create(output),
