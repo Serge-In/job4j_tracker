@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import ru.job4j.tracker.action.*;
 import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.input.Stub;
+import ru.job4j.tracker.output.Mock;
 import ru.job4j.tracker.output.Output;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,6 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * 2023-06-18
  * 12.2. Тесты вывода на консоль [#33585  [#33585]]
  * Произвести тестирование классов ListAction, FindByNameAction, FindByIdAction.
+ * 2023-12-08
+ * whenInvalidExit тесты на сценарий, где пользователь вводит сначала несуществующий пункт, а потом верный.
  */
 public class StartUITest {
     @Test
@@ -186,6 +189,35 @@ public class StartUITest {
                 + "0. Find items by name" + ln
                 + "1. Exit" + ln
                 + "Exit" + ln
+        );
+    }
+
+    @Test
+    void whenInvalidExit() {
+        Output output = new Mock();
+        Input in = new Stub(
+                new String[] {"0", "1"}
+        );
+        Tracker tracker = new Tracker();
+        User[] actions = {
+                new Create(output),
+                new List(output),
+                new Edit(output),
+                new Delete(output),
+                new FindByID(output),
+                new FindItemsByName(output),
+                new Exit(output)
+        };
+
+        new StartUI(output).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(output.toString()).isEqualTo(
+                "Меню:" + ln
+                        + "0. Завершить программу" + ln
+                        + "Неверный ввод, вы можете выбрать: 0 .. 0" + ln
+                        + "Меню:" + ln
+                        + "0. Завершить программу" + ln
+                        + "=== Завершение программы ===" + ln
         );
     }
 }
