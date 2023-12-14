@@ -9,6 +9,9 @@ import javax.print.event.PrintServiceAttributeListener;
  * Допишите метод поиска индекса элемента в строковом массиве.
  * Если элемента нет, то нужно выкинуть исключение ElementNotFoundException. В сигнатуре метода объявить это исключение.
  * Добавьте метод main, и в нем вызовите метод indexOf. В методе main используйте конструкцию try-catch.
+ * 2023-12-08
+ * 0.4. Пользовательские исключения. [#219367 #463171]
+ * Допишите метод поиска индекса элемента в строковом массиве. FindEl
  */
 
 public class FindEl {
@@ -41,17 +44,26 @@ public class FindEl {
             if (indexOf(values, key) != -1) {
                 sent(key, abuses);
             }
-
+        } catch (ElementAbuseException ea) {
+            ea.printStackTrace();
+        } catch (ElementNotFoundException en) {
+            en.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
-
+        } catch (Throwable th) {
+            th.printStackTrace();
         }
     }
 
     public static void main(String[] args) {
         String[] value = {"1", "2", "3"};
         String[] abuses = {"1", "2", "6"};
-        String key = "0";
+        String key = "3";
+        try {
+            System.out.println("index in array for element: " + key + " is " + indexOf(value, key));
+        } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+        }
         System.out.println("element to sent: " + key + " is ");
         process(value, key, abuses);
     }
