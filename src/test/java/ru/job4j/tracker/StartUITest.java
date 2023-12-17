@@ -15,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Произвести тестирование классов ListAction, FindByNameAction, FindByIdAction.
  * 2023-12-08
  * whenInvalidExit тесты на сценарий, где пользователь вводит сначала несуществующий пункт, а потом верный.
+ *
  */
 public class StartUITest {
     @Test
