@@ -12,6 +12,7 @@ package ru.job4j.ex;
  * main - поправить код за счет использования try-catch с множественным блоком catch.
  * В блоке catch(UserNotFoundException) - должно быть выведено на консоль сообщение, что пользователя не найдено.
  * В блоке  catch(UserInvalidException) - должно быть выведено на консоль сообщение, что пользователь не валидный.
+ *
  */
 
 public class UserStore {
