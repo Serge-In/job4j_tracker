@@ -6,7 +6,6 @@ package ru.job4j.early;
  * 1. Создать класс PasswordValidator, который занимается проверкой пароля:
  * 2. Добавить валидацию в метод validate(), применив принцип охранных выражений.
  * Если password null, то выбросить исключение IllegalArgumentException с сообщением "Password can't be null";
- *
  * 3. Учесть требования к паролю ниже. Если хотя бы одно из требований нарушается,
  * то необходимо генерировать исключение IllegalArgumentException с соответствующим сообщением
  * (в скобках будет указано какую строку-сообщение необходимо передавать в конструктор при генерации исключения):
@@ -46,10 +45,10 @@ public class PasswordValidator {
         boolean hasDigit = false;
         boolean hasSpecial = false;
         for (char symbol : password.toCharArray()) {
-            hasUpCase = Character.isUpperCase(symbol) ? true : hasUpCase;
-            hasLowCase = Character.isLowerCase(symbol) ? true : hasLowCase;
-            hasDigit = Character.isDigit(symbol) ? true : hasDigit;
-            hasSpecial = !Character.isLetterOrDigit(symbol) ? true : hasSpecial;
+            hasUpCase = Character.isUpperCase(symbol) || hasUpCase;
+            hasLowCase = Character.isLowerCase(symbol) || hasLowCase;
+            hasDigit = Character.isDigit(symbol) || hasDigit;
+            hasSpecial = !Character.isLetterOrDigit(symbol) || hasSpecial;
         }
         if (!hasUpCase) {
             throw new IllegalArgumentException(
@@ -72,9 +71,8 @@ public class PasswordValidator {
             );
         }
 
-        String[] notAllowedSequence = {"qwerty", "12345", "password", "admin", "user"};
         String passwordLowCase = password.toLowerCase();
-        for (String seq: notAllowedSequence) {
+        for (String seq: FORBIDDEN) {
             if (passwordLowCase.contains(seq)) {
                 throw new IllegalArgumentException(
                         "Password shouldn't contain substrings: qwerty, 12345, password, admin, user"

@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * 2023-12-17
+ */
+
 class PasswordValidatorTest {
     @Test
     void whenPasswordIsValid() {
