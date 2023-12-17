@@ -26,6 +26,7 @@ import ru.job4j.tracker.output.Output;
  * 2023-12-08
  * в метод init добавьте обработку ситуаций: ввод несуществующего пункта меню, ввода строки вместо числа.
  * изменим ввод Input input = new Console() с Console на ValidateInput
+ *
  */
 public class StartUI {
     private final Output out;
