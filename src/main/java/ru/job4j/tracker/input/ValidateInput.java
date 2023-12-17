@@ -10,6 +10,7 @@ import ru.job4j.tracker.output.Output;
  * 2023-12-13
  * 2. Рефакторинг - Шаблон Декоратор для валидатора. [#34117]
  * Произвести рефакторинг кода класса ru.job4j.tracker.ValidateInput способом с обработкой исключения класса NumberFormatException
+ *
  */
 
 public class ValidateInput implements Input {
