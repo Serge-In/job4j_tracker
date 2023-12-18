@@ -43,13 +43,12 @@ class ValidateInputTest {
     void whenMultiInput() {
         Output output = new ru.job4j.tracker.output.Stub();
         String[] arrInput = {"1", "3"};
-        int[] arrRequest = {1, 3};
         Input in = new Mock(arrInput);
         ValidateInput input = new ValidateInput(output, in);
-        for (int i = 0; i <  arrInput.length; i++) {
-            int selected = input.askInt("Enter menu:");
-            assertThat(selected).isEqualTo(arrRequest[i]);
-        }
+        int selected = input.askInt("Enter menu:");
+        assertThat(selected).isEqualTo(1);
+        selected = input.askInt("Enter menu:");
+        assertThat(selected).isEqualTo(3);
     }
 
     @Test
