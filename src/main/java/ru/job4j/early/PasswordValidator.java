@@ -44,35 +44,52 @@ public class PasswordValidator {
         boolean hasLowCase = false;
         boolean hasDigit = false;
         boolean hasSpecial = false;
+        boolean hasAllSymbols = false;
+
         for (char symbol : password.toCharArray()) {
-            hasUpCase = Character.isUpperCase(symbol) || hasUpCase;
-            hasLowCase = Character.isLowerCase(symbol) || hasLowCase;
-            hasDigit = Character.isDigit(symbol) || hasDigit;
-            hasSpecial = !Character.isLetterOrDigit(symbol) || hasSpecial;
+            if (Character.isUpperCase(symbol)) {
+                hasUpCase = true;
+            }
+            if (Character.isLowerCase(symbol)) {
+                hasLowCase = true;
+            }
+            if (Character.isDigit(symbol)) {
+                hasDigit = true;
+            }
+            if (!Character.isLetterOrDigit(symbol)) {
+                hasSpecial = true;
+            }
+            if (hasUpCase && hasLowCase && hasDigit && hasSpecial) {
+                hasAllSymbols = true;
+                break;
+            }
         }
-        if (!hasUpCase) {
-            throw new IllegalArgumentException(
-                    "Password should contain at least one uppercase letter"
-            );
-        }
-        if (!hasLowCase) {
-            throw new IllegalArgumentException(
-                    "Password should contain at least one lowercase letter"
-            );
-        }
-        if (!hasDigit) {
-            throw new IllegalArgumentException(
-                    "Password should contain at least one figure"
-            );
-        }
-        if (!hasSpecial) {
-            throw new IllegalArgumentException(
-                    "Password should contain at least one special symbol"
-            );
+
+        if (!hasAllSymbols) {
+            if (!hasUpCase) {
+                throw new IllegalArgumentException(
+                        "Password should contain at least one uppercase letter"
+                );
+            }
+            if (!hasLowCase) {
+                throw new IllegalArgumentException(
+                        "Password should contain at least one lowercase letter"
+                );
+            }
+            if (!hasDigit) {
+                throw new IllegalArgumentException(
+                        "Password should contain at least one figure"
+                );
+            }
+            if (!hasSpecial) {
+                throw new IllegalArgumentException(
+                        "Password should contain at least one special symbol"
+                );
+            }
         }
 
         String passwordLowCase = password.toLowerCase();
-        for (String seq: FORBIDDEN) {
+        for (String seq : FORBIDDEN) {
             if (passwordLowCase.contains(seq)) {
                 throw new IllegalArgumentException(
                         "Password shouldn't contain substrings: qwerty, 12345, password, admin, user"
