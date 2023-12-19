@@ -18,8 +18,6 @@ public final class Airbus extends Aircraft {
     }
 
     @Override
-    //printModel() in ru.job4j.ooa.Airbus cannot override printModel() in ru.job4j.ooa.Aircraft
-    //  overridden method is final
     public void printModel() {
         System.out.println("Модель самолета: " + name);
     }
