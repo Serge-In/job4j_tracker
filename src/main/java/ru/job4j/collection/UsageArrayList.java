@@ -1,5 +1,7 @@
 package ru.job4j.collection;
+
 import java.util.ArrayList;
+
 /**
  * 2023-12-21
  * 2. Коллекции, ArrayList, List, Обобщения [#10094]
