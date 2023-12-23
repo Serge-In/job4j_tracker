@@ -62,7 +62,7 @@ public class StartUI {
         Tracker tracker = new Tracker();
         User[] actions = {
                 new Create(output),
-                new List(output),
+                new Listing(output),
                 new Edit(output),
                 new Delete(output),
                 new FindByID(output),
