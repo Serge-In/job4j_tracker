@@ -5,7 +5,7 @@ import java.util.LinkedList;
 /**
  * 2023-12-22
  * 5. Очередь с приоритетом на LinkedList [#41670]
- * Метод put(Task task)  должен вставлять в нужную позицию элемент.
+ * Метод put(Task task) должен вставлять в нужную позицию элемент.
  * Позиция определяется по полю приоритет.
  * Для вставки использовать add(int index, E value)
  * В данном задании запрещено использовать методы get, indexOf (которые определены в реализации интерфейса List - LinkedList) по той причине,
@@ -17,13 +17,14 @@ public class PriorityQueue {
 
     public void put(Task task) {
         int index = 0;
-        for (int i = 0; i < tasks.size(); i++) {
-            if (task.getPriority() < tasks.get(i).getPriority()) {
-                index = i;
-                break;
+
+        for (Task item : tasks) {
+            if (task.getPriority() < item.getPriority()) {
+                  break;
             }
-            index = i + 1;
+            index++;
         }
+
         this.tasks.add(index, task);
     }
 
