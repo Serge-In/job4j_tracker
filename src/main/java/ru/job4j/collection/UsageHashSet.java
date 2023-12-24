@@ -12,14 +12,13 @@ public class UsageHashSet {
     public static void main(String[] args) {
         HashSet<String> autos = new HashSet<>();
         autos.add("Volvo");
+        autos.add("Toyota");
+        autos.add("Toyota");
         autos.add("Lada");
+        autos.add("Toyota");
         autos.add("BMW");
         autos.add("Toyota");
-        System.out.println(autos);
 
-        for (String auto : autos) {
-            System.out.println(auto);
-        }
         System.out.println(autos);
     }
 }
