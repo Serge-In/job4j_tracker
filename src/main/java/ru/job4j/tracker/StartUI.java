@@ -4,6 +4,8 @@ import ru.job4j.tracker.action.*;
 import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.input.ValidateInput;
 import ru.job4j.tracker.output.Output;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * 2023-06-15
@@ -35,24 +37,24 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, Tracker tracker, User[] actions) {
+    public void init(Input input, Tracker tracker, List<User> actions) {
         boolean run = true;
         while (run) {
             showMenu(actions);
             int select = input.askInt("Select: ");
-            if (select < 0 || select >= actions.length) {
-                out.println("Неверный ввод, вы можете выбрать: 0 .. " + (actions.length - 1));
+            if (select < 0 || select >= actions.size()) {
+                out.println("Неверный ввод, вы можете выбрать: 0 .. " + (actions.size() - 1));
                 continue;
             }
-            User action = actions[select];
+            User action = actions.get(select);
             run = action.execute(input, tracker);
         }
     }
 
-    private void showMenu(User[] actions) {
+    private void showMenu(List<User> actions) {
         out.println("Menu.");
-        for (int index = 0; index < actions.length; index++) {
-            out.println(index + ". " + actions[index].name());
+        for (int index = 0; index < actions.size(); index++) {
+            out.println(index + ". " + actions.get(index).name());
         }
     }
 
@@ -60,15 +62,16 @@ public class StartUI {
         Output output = new ru.job4j.tracker.output.Console();
         Input input = new ValidateInput(output, new ru.job4j.tracker.input.Console());
         Tracker tracker = new Tracker();
-        User[] actions = {
-                new Create(output),
-                new Listing(output),
-                new Edit(output),
-                new Delete(output),
-                new FindByID(output),
-                new FindItemsByName(output),
-                new Exit(output)
-        };
+
+        List<User> actions = new ArrayList<>();
+        actions.add(new Create(output));
+        actions.add(new Listing(output));
+        actions.add(new Edit(output));
+        actions.add(new Delete(output));
+        actions.add(new FindByID(output));
+        actions.add(new FindItemsByName(output));
+        actions.add(new Exit(output));
+
         new StartUI(output).init(input, tracker, actions);
     }
 }

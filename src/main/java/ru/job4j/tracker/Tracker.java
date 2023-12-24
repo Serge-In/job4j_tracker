@@ -28,7 +28,6 @@ public class Tracker {
     public final List<Item> items = new ArrayList<>() {
     };
     private int ids = 1;
-    private int size = 0;
 
     public Item add(Item item) {
         items.add(item);
@@ -37,19 +36,17 @@ public class Tracker {
     }
 
     public List<Item> findAll() {
-        return items;
+        return List.copyOf(items);
     }
 
     public List<Item> findByName(String key) {
-        List<Item> itemsMatchKey = new ArrayList<>() {
-        };
-        int counter = 0;
+        List<Item> itemsMatchKey = new ArrayList<>();
         for (Item item : items) {
             if (key.equals(item.getName())) {
                 itemsMatchKey.add(item);
             }
         }
-        return itemsMatchKey;
+        return List.copyOf(itemsMatchKey);
     }
 
     private int indexOf(int id) {
@@ -73,7 +70,7 @@ public class Tracker {
         boolean rsl = (index != -1);
         if (rsl) {
             item.setId(id);
-            items.add(index, item);
+            items.set(index, item);
         }
         return rsl;
     }
