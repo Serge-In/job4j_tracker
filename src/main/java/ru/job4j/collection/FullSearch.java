@@ -14,10 +14,8 @@ import java.util.Set;
 public class FullSearch {
 
     public Set<String> extractNumber(List<Task> tasks) {
-        Set<Task> uniqueTasks = new HashSet<>(tasks);
         Set<String> uniqueNumbers = new HashSet<>();
-
-        for (Task uniqueTask : uniqueTasks) {
+        for (Task uniqueTask : tasks) {
             uniqueNumbers.add(uniqueTask.getNumber());
         }
         return uniqueNumbers;
