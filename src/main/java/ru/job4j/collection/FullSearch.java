@@ -12,11 +12,10 @@ import java.util.Set;
  */
 
 public class FullSearch {
-    public Set<String> extractNumber(List<Task> tasks) {
-        HashSet<Task> uniqueTasks = new HashSet<>();
-        Set<String> uniqueNumbers = new HashSet<>();
 
-        uniqueTasks.addAll(tasks);
+    public Set<String> extractNumber(List<Task> tasks) {
+        Set<Task> uniqueTasks = new HashSet<>(tasks);
+        Set<String> uniqueNumbers = new HashSet<>();
 
         for (Task uniqueTask : uniqueTasks) {
             uniqueNumbers.add(uniqueTask.getNumber());
