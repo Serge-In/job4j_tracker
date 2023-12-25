@@ -4,8 +4,9 @@ import ru.job4j.tracker.action.*;
 import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.input.ValidateInput;
 import ru.job4j.tracker.output.Output;
+
+import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList;
 
 /**
  * 2023-06-15
@@ -63,14 +64,15 @@ public class StartUI {
         Input input = new ValidateInput(output, new ru.job4j.tracker.input.Console());
         Tracker tracker = new Tracker();
 
-        List<User> actions = new ArrayList<>();
-        actions.add(new Create(output));
-        actions.add(new Listing(output));
-        actions.add(new Edit(output));
-        actions.add(new Delete(output));
-        actions.add(new FindByID(output));
-        actions.add(new FindItemsByName(output));
-        actions.add(new Exit(output));
+        List<User> actions = Arrays.asList(new Create(output),
+                new Listing(output),
+                new Listing(output),
+                new Edit(output),
+                new Delete(output),
+                new FindByID(output),
+                new FindItemsByName(output),
+                new Exit(output)
+        );
 
         new StartUI(output).init(input, tracker, actions);
     }
