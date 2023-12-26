@@ -3,7 +3,6 @@ package ru.job4j.queue;
 import java.util.Deque;
 import java.lang.StringBuilder;
 import java.lang.Character;
-import java.util.Iterator;
 
 /**
  * 2023-12-26
@@ -25,75 +24,22 @@ public class ReconstructPhrase {
     }
 
     private String getEvenElements() {
-//        // this is ok
-//        StringBuilder str = new StringBuilder();
-//        int size = evenElements.size() / 2;
-//        for (int i = 0; i < size; i++) {
-//            str.append(evenElements.poll());
-//            evenElements.poll();
-//        }
-//        return str.toString();
-
-        // this is ok
         StringBuilder str = new StringBuilder();
-        Iterator<Character> iterator = evenElements.iterator();
-        while (iterator.hasNext()) {
+        int size = evenElements.size() / 2;
+        for (int i = 0; i < size; i++) {
             str.append(evenElements.poll());
             evenElements.poll();
         }
         return str.toString();
-
-//        // this is ok
-//        String str = "";
-//        Iterator<Character> iterator = evenElements.iterator();
-//        while (iterator.hasNext()) {
-//            str += Character.toString(evenElements.poll());
-//            evenElements.poll();
-//        }
-//        return str;
     }
 
     private String getDescendingElements() {
-//        // this is ok
-//        StringBuilder str = new StringBuilder();
-//          int size = descendingElements.size();
-//        for (int i = 0; i < size; i++) {
-//            str.append(descendingElements.pollLast());
-//        }
-//        return str.toString();
-
-        // this is ok
         StringBuilder str = new StringBuilder();
-        Iterator<Character> iterator = descendingElements.iterator();
-        while (iterator.hasNext()) {
+          int size = descendingElements.size();
+        for (int i = 0; i < size; i++) {
             str.append(descendingElements.pollLast());
         }
         return str.toString();
-
-//        // this is ok
-//        String str = "";
-//        Iterator<Character> iterator = descendingElements.iterator();
-//        while (iterator.hasNext()) {
-//            str += Character.toString(descendingElements.pollLast());
-//        }
-//        return str;
-
-//        StringBuilder str = new StringBuilder();
-//        //java.util.ConcurrentModificationException
-//        for (char ch : descendingElements) {
-//            str.append(descendingElements.pollLast());
-//        }
-//        return str.toString();
-
-//        String str = "";
-//        for (char ch : descendingElements) {
-//            str += (descendingElements.pollLast()); //java.util.ConcurrentModificationException
-//            str += (descendingElements.pollLast()).toString(); //java.util.ConcurrentModificationException
-//            str += Character.toString(descendingElements.pollLast()); //java.util.ConcurrentModificationException
-//            str += Character.toString(ch);//ok
-//        }
-//        return str.toString();
-//    }
     }
 
     public String getReconstructPhrase() {
