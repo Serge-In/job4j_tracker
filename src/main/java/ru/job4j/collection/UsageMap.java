@@ -16,6 +16,7 @@ public class UsageMap {
         hashMap.put("mail@1", "pupkin");
         hashMap.put("mail@2", "bobkin");
         hashMap.put("mail@2", "soskin");
+        hashMap.put("mail@1", "pipkin");
         System.out.println(hashMap);
         for (String key : hashMap.keySet()) {
             System.out.println(key + " = " + hashMap.get(key));
