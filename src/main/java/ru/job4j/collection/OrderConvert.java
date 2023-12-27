@@ -14,11 +14,9 @@ import java.util.List;
 public class OrderConvert {
     public static HashMap<String, Order> process(List<Order> orders) {
         HashMap<String, Order> map = new HashMap<>();
-        String key;
         for (Order order : orders) {
-            key = order.getNumber();
-            if (!map.containsKey(key)) {
-                map.put(key, order);
+            if (!map.containsKey(order.getNumber())) {
+                map.put(order.getNumber(), order);
             }
         }
         return map;
