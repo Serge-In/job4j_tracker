@@ -12,7 +12,6 @@ import java.util.Objects;
  * 3. Добавлять пользователю банковский счет. У пользователя системы могут быть несколько счетов.
  * 4. Переводить деньги с одного банковского счета на другой счет
  */
-
 public class Account {
     private String requisite;
     private double balance;

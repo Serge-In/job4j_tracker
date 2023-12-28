@@ -1,9 +1,7 @@
 package ru.job4j.bank;
 
 import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertThrows;
 
 class BankServiceTest {
     @Test
@@ -13,16 +11,6 @@ class BankServiceTest {
         bank.addUser(user);
         assertThat(bank.findByPassport("3434")).isEqualTo(user);
     }
-
-//    @Test
-//    void addDuplicateUser() {
-//        User user1 = new User("3434", "Petr Arsentev");
-//        User user2 = new User("3434", "Petr Arsentev");
-//        BankService bank = new BankService();
-//        bank.addUser(user1);
-//         // как сделать тест для исключения ?
-//        assertThrows("Ошибка: Пользователь с таким паспортом уже есть в БД");
-//    }
 
     @Test
     void deleteUserIsTrue() {

@@ -8,7 +8,6 @@ import java.util.Objects;
  * модель пользователя банка User
  * Эта модель содержит поля: номер паспорта и ФИО
  */
-
 public class User {
     private String passport;
     private String username;
