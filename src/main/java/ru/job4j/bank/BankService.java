@@ -36,10 +36,12 @@ public class BankService {
      *  Если он есть, то нового добавлять не надо.
      */
     public void addUser(User user) {
-        if (findByPassport(user.getPassport()) == null) {
-            List<Account> userAccounts = new ArrayList<>();
-            users.put(user, userAccounts);
-        }
+//        if (findByPassport(user.getPassport()) == null) {
+//            List<Account> userAccounts = new ArrayList<>();
+//            users.put(user, userAccounts);
+//        }
+        List<Account> userAccounts = new ArrayList<>();
+        users.putIfAbsent(user, userAccounts);
     }
 
     /**
@@ -49,8 +51,9 @@ public class BankService {
      * Согласно переопределенному equals и hashcode у User, их сравнение происходит по полю passport.
      * Для удаления Вам понадобится метод remove по ключу (вернет объект)
      */
+
     public void deleteUser(String passport) {
-        users.remove(findByPassport(passport));
+        users.remove(new User(passport, "")); //Удаляем без проверки
     }
 
     /**
@@ -66,13 +69,10 @@ public class BankService {
         User user = findByPassport(passport);
         if (user != null) {
             List<Account> userAccounts = users.get(user);
-            for (Account userAccount : userAccounts) {
-                if (userAccount.getRequisite().equals(account.getRequisite())) {
-                    return;
-                }
+            if (!userAccounts.contains(account)) {
+                userAccounts.add(account);
+                users.put(user, userAccounts);
             }
-            userAccounts.add(account);
-            users.put(user, userAccounts);
         }
     }
 
@@ -104,13 +104,12 @@ public class BankService {
      */
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
-        if (user == null) {
-            return null;
-        }
-        List<Account> userAccounts = users.get(user);
-        for (Account userAccount : userAccounts) {
-            if (userAccount.getRequisite().equals(requisite)) {
-                return userAccount;
+        if (user != null) {
+            List<Account> userAccounts = users.get(user);
+            for (Account userAccount : userAccounts) {
+                if (userAccount.getRequisite().equals(requisite)) {
+                    return userAccount;
+                }
             }
         }
         return null;
@@ -130,20 +129,17 @@ public class BankService {
                                  String destinationPassport, String destinationRequisite,
                                  double amount) {
         Account sourceAccount = findByRequisite(sourcePassport, sourceRequisite);
-        if (sourceAccount == null) {
-            return false;
-        }
         Account destinationAccount = findByRequisite(destinationPassport, destinationRequisite);
-        if (destinationAccount == null) {
-            return false;
+        if (sourceAccount != null && destinationAccount != null) {
+
+            double sourceBalance = sourceAccount.getBalance();
+            if (sourceBalance >= amount) {
+                sourceAccount.setBalance(sourceBalance - amount);
+                destinationAccount.setBalance(destinationAccount.getBalance() + amount);
+                return true;
+            }
         }
-        Double sourceBalance = sourceAccount.getBalance();
-        if (sourceBalance < amount) {
-            return false;
-        }
-        sourceAccount.setBalance(sourceBalance - amount);
-        destinationAccount.setBalance(destinationAccount.getBalance() + amount);
-        return true;
+        return false;
     }
 
     /**
