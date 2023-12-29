@@ -36,10 +36,6 @@ public class BankService {
      *  Если он есть, то нового добавлять не надо.
      */
     public void addUser(User user) {
-//        if (findByPassport(user.getPassport()) == null) {
-//            List<Account> userAccounts = new ArrayList<>();
-//            users.put(user, userAccounts);
-//        }
         List<Account> userAccounts = new ArrayList<>();
         users.putIfAbsent(user, userAccounts);
     }
@@ -53,7 +49,7 @@ public class BankService {
      */
 
     public void deleteUser(String passport) {
-        users.remove(new User(passport, "")); //Удаляем без проверки
+        users.remove(new User(passport, ""));
     }
 
     /**
