@@ -121,12 +121,14 @@ public class AnalyzeByMap {
     }
 
     /**
-     * В списке объектов Label найти и вернуть Label с максимальным значением Score
+     * Из списка объектов Label вернуть Label с максимальным значением Score
      */
     public static Label maxScoreLabel(List<Label> list) {
         Label maxScoreLabel = new Label("", 0D);
         for (Label label : list) {
-            maxScoreLabel = label.score() > maxScoreLabel.score() ? label : maxScoreLabel;
+            if (label.score() > maxScoreLabel.score()) {
+                maxScoreLabel = label;
+            }
         }
         return maxScoreLabel;
     }
