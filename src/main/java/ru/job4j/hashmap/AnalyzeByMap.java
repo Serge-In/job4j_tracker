@@ -29,7 +29,6 @@ public class AnalyzeByMap {
      */
     public static List<Label> averageScoreByPupil(List<Pupil> pupils) {
         List<Label> list = new ArrayList<>();
-
         if (pupils.size() != 0) {
             double sumScorePupil = 0D;
             for (Pupil pupil : pupils) {
@@ -54,18 +53,13 @@ public class AnalyzeByMap {
      * Map<String, Integer> (в качестве реализации используем LinkedHashMap) -
      * в качестве ключа используем название предмета, в качестве значения - сумма баллов по этому предмету, которую мы получим у каждого ученика.
      * Созданный объект добавляем в результирующий список, его мы и вернем в конце метода.
+     * getOrDefault и put
      */
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
         Map<String, Double> mapSubject = new LinkedHashMap<>();
-            double sumSubjScore;
             for (Pupil pupil : pupils) {
                 for (Subject subject : pupil.subjects()) {
-                    if (!mapSubject.containsKey(subject.name())) {
-                        mapSubject.put(subject.name(), (double) subject.score());
-                    } else {
-                        sumSubjScore = mapSubject.get(subject.name()) + subject.score();
-                        mapSubject.put(subject.name(), sumSubjScore);
-                    }
+                    mapSubject.put(subject.name(), mapSubject.getOrDefault(subject.name(), 0D) + subject.score());
                 }
             }
             List<Label> list = new ArrayList<>();
@@ -93,8 +87,7 @@ public class AnalyzeByMap {
                 list.add(label);
                 sumScorePupil = 0D;
         }
-        list.sort(Comparator.naturalOrder());
-        return list.get(list.size() - 1);
+        return maxScoreLabel(list);
 }
 
     /**
@@ -124,7 +117,17 @@ public class AnalyzeByMap {
         for (String key : mapSubject.keySet()) {
             list.add(new Label(key, mapSubject.get(key)));
         }
-        list.sort(Comparator.naturalOrder());
-        return list.get(list.size() - 1);
+        return maxScoreLabel(list);
+    }
+
+    /**
+     * В списке объектов Label найти и вернуть Label с максимальным значением Score
+     */
+    public static Label maxScoreLabel(List<Label> list) {
+        Label maxScoreLabel = new Label("", 0D);
+        for (Label label : list) {
+            maxScoreLabel = label.score() > maxScoreLabel.score() ? label : maxScoreLabel;
+        }
+        return maxScoreLabel;
     }
 }
