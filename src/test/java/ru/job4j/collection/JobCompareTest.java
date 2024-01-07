@@ -17,6 +17,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
  * 2. Напишите тесты, проверяющие отдельно поведение компараторов.
  * 3. Напишите тесты, проверяющие поведение комбинированных компараторов.
  */
+
 class JobCompareTest {
 
     @Test
