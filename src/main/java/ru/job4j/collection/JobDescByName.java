@@ -8,6 +8,7 @@ import java.util.Comparator;
  * 1. Для модели ru.job4j.collection.Job создайте 4 компаратора:
  *  - по убыванию имени;
  */
+
 public class JobDescByName implements Comparator<Job> {
     @Override
     public int compare(Job job1, Job job2) {

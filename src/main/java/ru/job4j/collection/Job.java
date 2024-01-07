@@ -9,6 +9,7 @@ package ru.job4j.collection;
  *  - по убыванию имени;
  *  - по убыванию приоритета.
  */
+
 public class Job implements Comparable<Job> {
     private String name;
 

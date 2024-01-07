@@ -10,6 +10,7 @@ import java.util.Comparator;
  *  Integer.compare(job1.getPriority() = 1, job2.getPriority() = 2) = -1
  *  Integer.compare(job1.getPriority() = 3, job2.getPriority() = 2) = 1
  */
+
 public class JobAscByPriority implements Comparator<Job> {
     @Override
     public int compare(Job job1, Job job2) {
