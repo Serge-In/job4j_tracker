@@ -13,27 +13,11 @@ import java.util.Comparator;
 public class StringCompare implements Comparator<String> {
     @Override
     public int compare(String left, String right) {
-        char[] charsLeft = left.toCharArray();
-        char[] charsRight = right.toCharArray();
-        int rsl = 0;
-        int minLength = charsLeft.length;
-
-        if (charsLeft.length < charsRight.length) {
-            rsl = -1;
-            minLength = charsLeft.length;
-        } else if (charsLeft.length > charsRight.length) {
-            rsl = 1;
-            minLength = charsRight.length;
-        }
-
-        int compare = 0;
-        for (int i = 0; i < minLength; i++) {
-            compare = Character.compare(charsLeft[i], charsRight[i]);
-            if (compare != 0) {
-                rsl = compare;
-                break;
+        for (int i = 0; i < Math.min(left.length(), right.length()); i++) {
+            if (left.charAt(i) != right.charAt(i)) {
+                return Character.compare(left.charAt(i), right.charAt(i));
             }
         }
-        return rsl;
+        return Integer.compare(left.length(), right.length());
     }
 }
