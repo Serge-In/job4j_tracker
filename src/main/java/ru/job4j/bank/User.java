@@ -3,15 +3,25 @@ package ru.job4j.bank;
 import java.util.Objects;
 
 /**
- * 2023-12-26
- * 3. Банковские переводы [#10038]
- * модель пользователя банка User
+ * Модель пользователя банка User
  * Эта модель содержит поля: номер паспорта и ФИО
  */
 public class User {
+    /**
+     * Поле номер паспорта
+     */
     private String passport;
+
+    /**
+     * Поле Имя пользователя
+     */
     private String username;
 
+    /**
+     * Конструктор
+     * @param passport Номер паспорта
+     * @param username Имя пользователя
+     */
     public User(String passport, String username) {
         this.passport = passport;
         this.username = username;

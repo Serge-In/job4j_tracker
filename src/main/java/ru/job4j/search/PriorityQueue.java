@@ -13,8 +13,17 @@ import java.util.LinkedList;
  * Метод take возвращает первый элемент из списка и удаляет его. Эти действия мы делаем через метод poll().
  */
 public class PriorityQueue {
+    /**
+     * Хранение задания осуществляется в коллекции типа LinkedList
+     */
     private LinkedList<Task> tasks = new LinkedList<>();
 
+    /**
+     * Метод принимает на вход заявку и добавляет ее в очередь.
+     * Если встречаются 2 задания с одинаковым приоритетом, то в очереди
+     * они распределяются по принципу FIFO.
+     * @param task задача которая добавляется в очередь
+     */
     public void put(Task task) {
         int index = 0;
 
@@ -28,6 +37,10 @@ public class PriorityQueue {
         this.tasks.add(index, task);
     }
 
+    /**
+     * Метод позволяет получить первую задачу в очереди
+     * @return возвращает задачу из головы очереди или null если очередь пуста
+     */
     public Task take() {
         return tasks.poll();
     }
