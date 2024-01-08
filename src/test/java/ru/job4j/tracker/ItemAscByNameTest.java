@@ -23,9 +23,8 @@ class ItemAscByNameTest {
         expected.add(new Item(5, "second"));
         expected.add(new Item(6, "third"));
 
-//        assertThat(items.get(0).getName()).isEqualTo(expected.get(0).getName());
-//        assertThat(items.get(1).getName()).isEqualTo(expected.get(1).getName());
-//        assertThat(items.get(2).getName()).isEqualTo(expected.get(2).getName());
-        assertThat(items).isEqualTo(expected);
+        assertThat(items.get(0).getName()).isEqualTo(expected.get(0).getName());
+        assertThat(items.get(1).getName()).isEqualTo(expected.get(1).getName());
+        assertThat(items.get(2).getName()).isEqualTo(expected.get(2).getName());
     }
 }

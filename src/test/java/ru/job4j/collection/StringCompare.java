@@ -10,6 +10,7 @@ import java.util.Comparator;
  * Сравнение в лексикографическом порядке.
  * В этом задании нельзя использовать метод String.compareTo.
  */
+
 public class StringCompare implements Comparator<String> {
     @Override
     public int compare(String left, String right) {
