@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 /**
  * 2023-04-20
@@ -52,5 +53,27 @@ public class Item {
                + ", name='" + name
                + '\'' + ", created=" + created.format(FORMATTER)
                + '}';
+    }
+
+    /**
+     * 2024-01-09
+     * для сравнения объектов Items между собой по значениям Id и Name
+     * Нужно переопределить методы equals и hashcode так, чтобы они не учитывали время создания объекта
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Item item = (Item) o;
+        return id == item.id && name.equals(item.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }

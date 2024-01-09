@@ -30,12 +30,10 @@ class ItemDescByNameTest {
         Collections.sort(items, new ItemDescByName());
 
         List<Item> expected = new ArrayList<>();
-        expected.add(new Item(6, "third"));
-        expected.add(new Item(5, "second"));
-        expected.add(new Item(4, "first"));
+        expected.add(new Item(3, "third"));
+        expected.add(new Item(2, "second"));
+        expected.add(new Item(1, "first"));
 
-        assertThat(items.get(0).getName()).isEqualTo(expected.get(0).getName());
-        assertThat(items.get(1).getName()).isEqualTo(expected.get(1).getName());
-        assertThat(items.get(2).getName()).isEqualTo(expected.get(2).getName());
+        assertThat(items).isEqualTo(expected);
     }
 }
