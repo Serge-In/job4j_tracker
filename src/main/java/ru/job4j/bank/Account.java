@@ -25,6 +25,7 @@ public class Account {
     }
 
     /**
+     * Получить номер банковского счета
      * @return Номер банковского счета
      */
     public String getRequisite() {
