@@ -28,16 +28,11 @@ public class Departments {
         for (String value : departments) {
             String start = "";
             for (String element : value.split("/")) {
-                temp.add(start + "/" + element);
-                start = start + "/" + element;
+                start += "".equals(start) ? element : "/" + element;
+                temp.add(start);
             }
         }
-
-        ArrayList<String> res = new ArrayList<>();
-        for (String el : temp) {
-            res.add(el.substring(1));
-        }
-        return res;
+        return new ArrayList<>(temp);
     }
 
     /**
