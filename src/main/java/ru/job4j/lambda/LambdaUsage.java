@@ -14,7 +14,11 @@ public class LambdaUsage {
     public static void main(String[] args) {
         List<String> strings = Arrays.asList("eeeee", "a",  "ccc", "dddd", "bb");
         Comparator<String> comparator = (left, right) -> {
-            System.out.println("compare.length() : " + right + " : " + left + " -> " + right.length() + " : " + left.length());
+            System.out.println("Integer.compare(right.length(), left.length()) -> "
+                    + left + " , " + right + " -> "
+                    + left.length() + " , " + right.length() + " -> "
+                    + Integer.compare(right.length(), left.length()));
+
             return Integer.compare(right.length(), left.length());
         };
         strings.sort(comparator);
