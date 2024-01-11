@@ -25,9 +25,9 @@ public class DepartmentsDescComparator implements Comparator<String> {
      */
     @Override
     public int compare(String left, String right) {
-        List<String> listLeft = new ArrayList<>(Arrays.asList(left.split("/")));
-        List<String> listRight = new ArrayList<>(Arrays.asList(right.split("/")));
-        int res = listRight.get(0).compareTo(listLeft.get(0));
+        String[] arrLeft = left.split("/");
+        String[] arrRight = right.split("/");
+        int res = arrRight[0].compareTo(arrLeft[0]);
         return (res == 0) ? left.compareTo(right) : res;
     }
 }
