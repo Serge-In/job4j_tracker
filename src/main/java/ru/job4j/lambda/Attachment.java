@@ -4,7 +4,6 @@ package ru.job4j.lambda;
  * 2024-01-11
  * 1.1. Анонимные классы [#214142]
  */
-
 public class Attachment {
     private String name;
     private int size;
