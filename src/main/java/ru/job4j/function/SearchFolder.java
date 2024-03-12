@@ -11,26 +11,6 @@ import java.util.function.Predicate;
  * После реализации - методы filterSize() и filterName() нужно будет удалить.
  */
 public class SearchFolder {
-    public static List<Folder> filterSize(List<Folder> list) {
-        List<Folder> result = new ArrayList<>();
-        for (Folder folder : list) {
-            if (folder.getSize() > 100) {
-                result.add(folder);
-            }
-        }
-        return result;
-    }
-
-    public static List<Folder> filterName(List<Folder> list) {
-        List<Folder> result = new ArrayList<>();
-        for (Folder folder : list) {
-            if (folder.getName().contains("bug")) {
-                result.add(folder);
-            }
-        }
-        return result;
-    }
-
     public static List<Folder> filter(List<Folder> list, Predicate<Folder> predicate) {
         List<Folder> result = new ArrayList<>();
         for (Folder folder : list) {
