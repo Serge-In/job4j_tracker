@@ -18,15 +18,15 @@ public class PhoneDictionaryFunc {
     }
 
     public ArrayList<Person> find(String key) {
-
-        BiPredicate<String, String> combine = (x, y) -> x.equals(y);
+        BiPredicate<String, Person> name = (x, y) -> x.equals(y.getName());
+        BiPredicate<String, Person> surname = (x, y) -> x.equals(y.getSurname());
+        BiPredicate<String, Person> phone = (x, y) -> x.equals(y.getPhone());
+        BiPredicate<String, Person> address = (x, y) -> x.equals(y.getAddress());
+        BiPredicate<String, Person> combine = name.or(surname).or(phone).or(address);
 
         ArrayList<Person> result = new ArrayList<>();
         for (Person person : persons) {
-            if (combine.test(person.getName(), key)
-                    || combine.test(person.getSurname(), key)
-                    || combine.test(person.getPhone(), key)
-                    || combine.test(person.getAddress(), key)) {
+            if (combine.test(key, person)) {
                 result.add(person);
             }
         }
