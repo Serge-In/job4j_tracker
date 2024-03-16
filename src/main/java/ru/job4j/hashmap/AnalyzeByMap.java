@@ -29,10 +29,10 @@ public class AnalyzeByMap {
      */
     public static List<Label> averageScoreByPupil(List<Pupil> pupils) {
         List<Label> list = new ArrayList<>();
-        if (pupils.size() != 0) {
+        if (!pupils.isEmpty()) {
             double sumScorePupil = 0D;
             for (Pupil pupil : pupils) {
-                if (pupil.subjects().size() != 0) {
+                if (!pupil.subjects().isEmpty()) {
                     for (Subject subject : pupil.subjects()) {
                         sumScorePupil += subject.score();
                     }
@@ -54,12 +54,22 @@ public class AnalyzeByMap {
      * в качестве ключа используем название предмета, в качестве значения - сумма баллов по этому предмету, которую мы получим у каждого ученика.
      * Созданный объект добавляем в результирующий список, его мы и вернем в конце метода.
      * getOrDefault и put
+     * UPD 2024-03-16
+     * 9. Лямбда выражения и Collection Framework [#505026]
+     *в методах averageScoreBySubject и bestSubject для реализации необходимо было сформировать промежуточную Map.
+     * Подходы по ее сбору могут быть разными. Вашей задачей будет переделать все на использование метода merge();
+     * было:
+     * mapSubject.put(subject.name(), mapSubject.getOrDefault(subject.name(), 0D) + subject.score());
+     * стало:
+     * mapSubject.merge(subject.name(), (double) subject.score(), ((oldValue, newValue) -> oldValue + newValue));
+     * или с ссылкой на метод:
+     * mapSubject.merge(subject.name(), (double) subject.score(), (Double::sum));
      */
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
         Map<String, Double> mapSubject = new LinkedHashMap<>();
             for (Pupil pupil : pupils) {
                 for (Subject subject : pupil.subjects()) {
-                    mapSubject.put(subject.name(), mapSubject.getOrDefault(subject.name(), 0D) + subject.score());
+                    mapSubject.merge(subject.name(), (double) subject.score(), (Double::sum));
                 }
             }
             List<Label> list = new ArrayList<>();
@@ -98,19 +108,38 @@ public class AnalyzeByMap {
      * в качестве первого параметра используем ключ, для второго - значение карты.
      * После этого мы сортируем список с помощью Comparator.naturalOrder()
      * и в итоге возвращаем последний элемент из полученного списка
+     *      * UPD 2024-03-16
+     *      * 9. Лямбда выражения и Collection Framework [#505026]
+     *      *в методах averageScoreBySubject и bestSubject для реализации необходимо было сформировать промежуточную Map.
+     *      * Подходы по ее сбору могут быть разными. Вашей задачей будет переделать все на использование метода merge();
+     *      * было:
+     *            double sumSubjScore;
+     *            for (Pupil pupil : pupils) {
+     *              for (Subject subject : pupil.subjects()) {
+     *                 if (!mapSubject.containsKey(subject.name())) {
+     *                     mapSubject.put(subject.name(), (double) subject.score());
+     *                 } else {
+     *                     sumSubjScore = mapSubject.get(subject.name()) + subject.score();
+     *                     mapSubject.put(subject.name(), sumSubjScore);
+     *                 }
+     *              }
+     *            }
+     *      * стало:
+     *         for (Pupil pupil : pupils) {
+     *             for (Subject subject : pupil.subjects()) {
+     *                 mapSubject.merge(subject.name(), (double) subject.score(), ((oldValue, newValue) -> oldValue + newValue));
+     *             }
+     *         }
+     *      * или с ссылкой на метод:
+     *      * mapSubject.merge(subject.name(), (double) subject.score(), (Double::sum));
      */
     public static Label bestSubject(List<Pupil> pupils) {
 
         Map<String, Double> mapSubject = new LinkedHashMap<>();
-        double sumSubjScore;
+
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                if (!mapSubject.containsKey(subject.name())) {
-                    mapSubject.put(subject.name(), (double) subject.score());
-                } else {
-                    sumSubjScore = mapSubject.get(subject.name()) + subject.score();
-                    mapSubject.put(subject.name(), sumSubjScore);
-                }
+                mapSubject.merge(subject.name(), (double) subject.score(), (Double::sum));
             }
         }
         List<Label> list = new ArrayList<>();
