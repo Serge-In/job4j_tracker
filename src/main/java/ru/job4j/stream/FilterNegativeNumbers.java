@@ -18,7 +18,7 @@ public class FilterNegativeNumbers {
 
     public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(-2, 0, 3, 5, -10, 4);
-        List<Integer> positive = numbers.stream().filter(x -> x % 2 == 0 && x != 0).collect(Collectors.toList());
+        List<Integer> positive = numbers.stream().filter(x -> x > 0).collect(Collectors.toList());
         positive.forEach(System.out::println);
     }
 }
