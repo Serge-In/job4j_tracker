@@ -2,6 +2,10 @@ package ru.job4j.stream.client;
 
 import java.util.Objects;
 
+/**
+ * 2024-03-18
+ * 6. Список адресов [#110062]
+ */
 public class Address {
     private String city;
 
