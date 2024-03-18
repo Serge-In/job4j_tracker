@@ -2,6 +2,10 @@ package ru.job4j.stream.school;
 
 import java.util.Objects;
 
+/**
+ * 2024-03-18
+ * 5. Фильтрация учеников [#110058]
+ */
 public class Student {
     private int score;
 
