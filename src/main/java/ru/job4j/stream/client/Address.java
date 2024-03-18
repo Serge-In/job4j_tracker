@@ -5,6 +5,9 @@ import java.util.Objects;
 /**
  * 2024-03-18
  * 6. Список адресов [#110062]
+ * 7. Уникальность элементов и сортировка. [#110225]
+ * В данной задаче требуется доработать функционал из задания "Список адресов".
+ * Для этого необходимо: - в класс Address добавить геттер для поля city
  */
 public class Address {
     private String city;
@@ -20,6 +23,10 @@ public class Address {
         this.street = street;
         this.home = home;
         this.apartment = apartment;
+    }
+
+    public String getCity() {
+        return city;
     }
 
     @Override
