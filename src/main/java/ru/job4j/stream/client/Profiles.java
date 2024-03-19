@@ -32,7 +32,7 @@ public class Profiles {
     }
 
     public static List<Address> collectSortWithoutDuplicate(List<Profile> profiles) {
-        Comparator<Address> comparator = (left, right) -> left.getCity().compareTo(right.getCity());
+        Comparator<Address> comparator = Comparator.comparing(Address::getCity);
         return profiles
                 .stream()
                 .map(Profile::getAddress)
