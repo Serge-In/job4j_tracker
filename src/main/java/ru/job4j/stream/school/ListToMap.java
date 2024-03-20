@@ -15,7 +15,8 @@ import java.util.stream.Collectors;
  * Collectors.toMap(
  * element -> element,
  * element -> element * element,
- * (existing, replacement) -> existing) //Третий аргумент позволяет обработать вариант добавления элемента с дублирующимся ключом.
+ * (existing, replacement) -> existing)
+ * Третий аргумент позволяет обработать вариант добавления элемента с дублирующимся ключом.
  * В данном случае мы оставляем существующее значение, хотя это поведение можно и изменить.
  *
  */
