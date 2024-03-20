@@ -32,11 +32,10 @@ public class Profiles {
     }
 
     public static List<Address> collectSortWithoutDuplicate(List<Profile> profiles) {
-        Comparator<Address> comparator = Comparator.comparing(Address::getCity);
         return profiles
                 .stream()
                 .map(Profile::getAddress)
-                .sorted(comparator)
+                .sorted(Comparator.comparing(Address::getCity))
                 .distinct()
                 .collect(Collectors.toList());
     }
