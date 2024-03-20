@@ -12,6 +12,12 @@ import java.util.stream.Collectors;
  * значение - объект Student (ученик).
  * Предусмотреть в реализации исключение дубликатов,
  * поскольку ключ - это фамилия, то дубликатами будут те пары, у которых совпадают фамилии студентов.
+ * Collectors.toMap(
+ * element -> element,
+ * element -> element * element,
+ * (existing, replacement) -> existing) //Третий аргумент позволяет обработать вариант добавления элемента с дублирующимся ключом.
+ * В данном случае мы оставляем существующее значение, хотя это поведение можно и изменить.
+ *
  */
 public class ListToMap {
     public static Map<String, Student> convert(List<Student> list) {

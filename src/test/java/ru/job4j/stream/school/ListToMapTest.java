@@ -9,6 +9,16 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 2024-03-18
+ * 8. Преобразование List в Map. [#110226]
+ * реализовать метод, который на вход принимает список студентов List<Student>
+ * и вернет результат его преобразования в Map<String, Student>, где:
+ * ключ - это фамилия студента;
+ * значение - объект Student (ученик).
+ * Предусмотреть в реализации исключение дубликатов,
+ * поскольку ключ - это фамилия, то дубликатами будут те пары, у которых совпадают фамилии студентов.
+ */
 class ListToMapTest {
     @Test
     void whenInputListNotHaveDuplicate() {
