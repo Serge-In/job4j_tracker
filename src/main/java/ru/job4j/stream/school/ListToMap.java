@@ -17,9 +17,9 @@ public class ListToMap {
     public static Map<String, Student> convert(List<Student> list) {
         return list.stream()
                 .collect(Collectors
-                        .toMap(Student::getSurname, // Key mapper
-                            student -> student, // Value mapper
-                            (existingValue, newValue) -> existingValue // Merge function
+                        .toMap(Student::getSurname,
+                            student -> student,
+                            (existing, replacement) -> existing
             ));
     }
 }
