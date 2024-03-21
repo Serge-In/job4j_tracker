@@ -7,7 +7,6 @@ import java.util.stream.Stream;
  * 9. Генерирование колоды карт. FlatMap [#504873]
  * Напишите метод main, в котором с помощью конструктора Card(Suit suit, Value value) генерируется колода карт.
  */
-
 enum Suit {
     Diamonds, Hearts, Spades, Clubs
 }
