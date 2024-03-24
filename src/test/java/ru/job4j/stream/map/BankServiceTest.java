@@ -43,6 +43,7 @@ class BankServiceTest {
         );
         Account result = new BankService(users).findByRequisite("123", "321123");
         Account expected = new Account("321123", 200D);
+        System.out.println(result);
         assertThat(result).isEqualTo(expected);
     }
 
