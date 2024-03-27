@@ -15,7 +15,7 @@ public class ConvertListTest {
         list.add(new int[] {1});
         list.add(new int[] {2, 3});
         List<Integer> result = ConvertList.convert(list);
-        List<Integer> expected = Arrays.asList(1, 2, 3);
+        List<Integer> expected = List.of(1, 2, 3);
         assertThat(result).containsAll(expected);
     }
 
@@ -23,7 +23,7 @@ public class ConvertListTest {
     public void whenZeroList() {
         List<int[]> list = new ArrayList<>();
         List<Integer> result = ConvertList.convert(list);
-        List<Integer> expected = Arrays.asList();
+        List<Integer> expected = List.of();
         assertThat(result).containsAll(expected);
     }
 }
