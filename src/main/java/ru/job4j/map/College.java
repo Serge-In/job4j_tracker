@@ -20,12 +20,10 @@ public class College {
     }
 
     public Optional<Student> findByAccount(String account) {
-        Optional<Student> student = Optional.empty();
-        student = students.keySet()
+        return students.keySet()
                 .stream()
                 .filter(obj -> obj.account().equals(account))
                 .findFirst();
-        return student;
     }
 
     public Optional<Subject> findBySubjectName(String account, String name) {
